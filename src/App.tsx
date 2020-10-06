@@ -1,8 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
-import UploadCard from "./UploadCard";
+import UploadCard from "./components/UploadCard";
 
 function App() {
   return (

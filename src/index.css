@@ -6,3 +6,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+
+  --bg-blue-100: #ebf8ff;
+  --bg-blue-500: #4299e1;
+
+  --bg-gray-800: #2d3748;
+  --bg-gray-500: #a0aec0;
+  --bg-gray-600: #718096;
+  --bg-gray-700: #4a5568;
+
+  --bg-white: #fff;
+}

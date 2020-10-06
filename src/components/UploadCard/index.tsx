@@ -1,7 +1,7 @@
 import React from "react";
 
 const UploadCard = () => {
-  return <div></div>;
+  return <div>Hello World</div>;
 };
 
 export default UploadCard;

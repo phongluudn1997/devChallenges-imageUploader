@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag And Drop</title>
+  </head>
+  <body>
+    <div id="drop-region">
+      <div class="drop-message">Drag & Drop images or click to upload</div>
+      <div id="image-preview"></div>
+    </div>
+
+    <script>
+      var dropRegion = document.getElementById("drop-region");
+      var imagePreviewRegion = document.getElementById("image-preview");
+      var fakeInput = document.createElement("input");
+      fakeInput.type = "file";
+      fakeInput.accep = "image/*";
+      fakeInput.multiple = true;
+      dropRegion.addEventListener("click", function () {
+        console.log("clicked");
+        fakeInput.click();
+      });
+      fakeInput.addEventListener("change", function () {
+        var files = fakeInput.files;
+        handleFiles(files);
+      });
+      function preventDefault(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      dropRegion.addEventListener("dragenter", preventDefault, false);
+      dropRegion.addEventListener("dragover", preventDefault, false);
+      dropRegion.addEventListener("dragend", preventDefault, false);
+      dropRegion.addEventListener("drop", preventDefault, false);
+      function handleDrop(e) {
+        var data = e.dataTransfer;
+        var files = data.files;
+        handleFiles(files);
+      }
+      dropRegion.addEventListener("drop", handleDrop, false);
+      function handleFiles(files) {
+        for (let i = 0; i < files.length; i++) {
+          if (validateImage(files[i])) {
+            previewAndUpload(files[i]);
+          }
+        }
+      }
+      function validateImage(image) {
+        var validTypes = ["image/jpeg", "image/png", "image/gif"];
+        if (validTypes.indexOf(image.type) == -1) {
+          alert("Invalid File type");
+          return false;
+        }
+        var maxSizeInBytes = 10e6;
+        if (image.size >= maxSizeInBytes) {
+          alert("File too large");
+          return false;
+        }
+        return true;
+      }
+      function previewAndUpload(image) {
+        var imgView = document.createElement("div");
+        imgView.className = "image-view";
+        imagePreviewRegion.appendChild(imgView);
+        var img = document.createElement("img");
+        imgView.appendChild(img);
+        var overlay = document.createElement("div");
+        overlay.className = "overlay";
+        imgView.appendChild(overlay);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(image);
+      }
+    </script>
+  </body>
+</html>

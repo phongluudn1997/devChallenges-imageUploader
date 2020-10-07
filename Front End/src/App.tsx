@@ -3,6 +3,7 @@ import axios from "axios";
 
 import "./App.css";
 import UploadCard from "./components/UploadCard";
+import LoadingCard from "./components/LoadingCard";
 
 enum StatusEnum {
   IDLE,
@@ -38,19 +39,25 @@ function App() {
       .post("http://localhost:8000/upload", data)
       .then((response) => {
         setStatus(StatusEnum.RESOVED);
-        console.log(response);
       })
       .catch((error) => {
         setStatus(StatusEnum.REJECT);
-        console.log(error);
       });
   };
 
   let showedComponent = null;
+  console.log(status);
 
   switch (status) {
     case StatusEnum.IDLE:
       showedComponent = <UploadCard handleFiles={handleFiles} />;
+      break;
+    case StatusEnum.PENDING:
+      showedComponent = <LoadingCard />;
+      break;
+    case StatusEnum.RESOVED:
+      showedComponent = <h1>Success</h1>;
+      break;
     default:
       break;
   }

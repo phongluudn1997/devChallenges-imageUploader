@@ -29,8 +29,13 @@ function App() {
 
   const previewAndUpload = (files: Array<File>): void => {
     setStatus(StatusEnum.PENDING);
+    const data = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      data.append("files", files[i]);
+    }
+    console.log(data);
     axios
-      .post("http://localhost:8000", files)
+      .post("http://localhost:8000/upload", data)
       .then((response) => {
         setStatus(StatusEnum.RESOVED);
         console.log(response);

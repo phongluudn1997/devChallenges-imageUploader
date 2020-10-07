@@ -46,11 +46,16 @@ function App() {
       });
   };
 
-  return (
-    <div className="App">
-      <UploadCard handleFiles={handleFiles} />
-    </div>
-  );
+  let showedComponent = null;
+
+  switch (status) {
+    case StatusEnum.IDLE:
+      showedComponent = <UploadCard handleFiles={handleFiles} />;
+    default:
+      break;
+  }
+
+  return <div className="App">{showedComponent}</div>;
 }
 
 export default App;

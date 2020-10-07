@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 import UploadCard from "./components/UploadCard";
 import LoadingCard from "./components/LoadingCard";
+import ImageReview from "./components/ImageReview";
 
 enum StatusEnum {
   IDLE,
@@ -56,13 +57,17 @@ function App() {
       showedComponent = <LoadingCard />;
       break;
     case StatusEnum.RESOVED:
-      showedComponent = <h1>Success</h1>;
+      showedComponent = <ImageReview />;
       break;
     default:
       break;
   }
 
-  return <div className="App">{showedComponent}</div>;
+  return (
+    <div className="App">
+      <ImageReview />
+    </div>
+  );
 }
 
 export default App;

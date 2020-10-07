@@ -21,3 +21,6 @@ node_modules/
 /Front End/npm-debug.log*
 /Front End/yarn-debug.log*
 /Front End/yarn-error.log*
+
+
+*.DS_Store

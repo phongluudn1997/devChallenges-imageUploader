@@ -50,7 +50,6 @@ function App() {
   };
 
   let showedComponent = null;
-  console.log(status);
 
   switch (status) {
     case StatusEnum.IDLE:

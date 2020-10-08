@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import style from "./style.module.scss";
 import placeholder from "../../assets/imgs/placeholder.png";
 
 const UploadCard = (props: any) => {
+  const fileInputRef = useRef<any>(null);
+
   const handleDrop = (e: any) => {
     const data = e.dataTransfer;
     const { files } = data;
@@ -12,6 +14,10 @@ const UploadCard = (props: any) => {
   const preventDefault = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
+  };
+
+  const handleClick = () => {
+    fileInputRef.current.click();
   };
 
   return (
@@ -33,7 +39,11 @@ const UploadCard = (props: any) => {
       </div>
       <p className={style["card__divider"]}>Or</p>
       <div>
+        <button onClick={handleClick} className={style["button"]}>
+          Choose a file
+        </button>
         <input
+          ref={fileInputRef}
           onChange={(e) => props.handleFiles(e.target.files)}
           multiple={true}
           type="file"

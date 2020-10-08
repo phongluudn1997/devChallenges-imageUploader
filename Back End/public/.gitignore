@@ -1,0 +1,5 @@
+# Ignore all files in public folder.
+*
+
+# Except for this file, so the empty public still push to origin.
+!.gitignore

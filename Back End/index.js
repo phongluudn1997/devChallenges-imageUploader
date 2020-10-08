@@ -21,7 +21,6 @@ const upload = multer({
 }).array("files");
 
 app.post("/upload", (req, res) => {
-  console.log("fadkf");
   upload(req, res, function (err) {
     if (err) {
       return res.status(500).json({ err });

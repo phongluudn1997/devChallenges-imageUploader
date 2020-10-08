@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Phong Luu",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",

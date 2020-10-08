@@ -22,13 +22,11 @@ const upload = multer({
 
 app.post("/upload", (req, res) => {
   upload(req, res, function (err) {
-    if (err instanceof multer.MulterError) {
-      res.status(500).json(err);
-    } else if (err) {
-      res.status(500).json(err);
+    if (err) {
+      return res.status(500).json(err);
     }
     res.status(200).json({
-      files: req.files,
+      fileNames: req.files.map((file) => file.filename),
     });
   });
 });

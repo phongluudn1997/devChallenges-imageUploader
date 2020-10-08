@@ -1,0 +1,23 @@
+:root {
+    --bg-red-600: #e53e3e;
+    --bg-green-400: #68d391;
+}
+
+.success {
+    background-color: var(--bg-green-400);
+}
+
+.warning {
+    background-color: var(--bg-red-600);
+}
+
+.toastify {
+    position: absolute;
+    right: var(--spacing-xxl);
+    top: var(--spacing-xxl);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-lg);
+    color: var(--bg-white);
+}

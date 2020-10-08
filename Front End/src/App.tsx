@@ -15,6 +15,7 @@ enum StatusEnum {
 
 function App() {
   const [status, setStatus] = useState<StatusEnum>(StatusEnum.IDLE);
+  const [urls, setUrls] = useState([]);
 
   const handleFiles = (files: FileList): void => {
     const validFiles = Object.values(files).filter((file) => {
@@ -39,6 +40,7 @@ function App() {
     axios
       .post("http://localhost:8000/upload", data)
       .then((response) => {
+        setUrls(response.data.fileNames);
         setStatus(StatusEnum.RESOVED);
       })
       .catch((error) => {
@@ -57,17 +59,13 @@ function App() {
       showedComponent = <LoadingCard />;
       break;
     case StatusEnum.RESOVED:
-      showedComponent = <ImageReview />;
+      showedComponent = <ImageReview url={urls[0]} />;
       break;
     default:
       break;
   }
 
-  return (
-    <div className="App">
-      <ImageReview />
-    </div>
-  );
+  return <div className="App">{showedComponent}</div>;
 }
 
 export default App;

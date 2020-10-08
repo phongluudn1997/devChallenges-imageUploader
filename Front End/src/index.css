@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 *,
 *::before,
 *::after {
-  font-family: "Georgia", serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,9 +14,10 @@
   --spacing-md: 12px;
   --spacing-lg: 16px;
   --spacing-xl: 24px;
+  --spacing-xxl: 32px;
 
   --bg-blue-100: #ebf8ff;
-  --bg-blue-500: #4299e1;
+  --bg-blue-500: #2F80ED;
 
   --bg-gray-800: #2d3748;
   --bg-gray-500: #a0aec0;
@@ -24,4 +27,9 @@
   --bg-gray-100: #f7fafc;
 
   --bg-white: #fff;
+}
+
+h3 {
+  color: var(--bg-gray-700);
+  font-size: 18px;
 }

@@ -24,4 +24,4 @@ node_modules/
 
 
 *.DS_Store
-/Back End/public
+/Back End/public/*

@@ -45,6 +45,7 @@ function App() {
       })
       .catch((error) => {
         setStatus(StatusEnum.REJECT);
+        console.log(error);
       });
   };
 
